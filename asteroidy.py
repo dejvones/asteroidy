@@ -23,13 +23,14 @@ rychlost = 20
 klavesy = set()
 
 def tiktak(t):
+    global rychlost
+    global uhel
     #posun
     sprite.x = sprite.x + rychlost*t*sin((pi*uhel)/180)
     sprite.y = sprite.y + rychlost*t*cos((pi*uhel)/180)
     
     #natočení
-    global rychlost
-    global uhel
+
     for sym in klavesy:
         if sym == DOWN:
             if rychlost - 20 >= 0:
@@ -47,7 +48,6 @@ def tiktak(t):
         elif sym == LEFT:
             sprite.rotation -=10
             uhel -=10
-        pass
 
 
 @window.event
@@ -71,7 +71,7 @@ def on_key_press(sym, mod):
     global klavesy
     klavesy.add(sym)
     
-    
+@window.event
 def on_key_release(sym, mod):
     global klavesy
     klavesy.remove(sym) 
